@@ -5,9 +5,8 @@ import base64
 
 cap = cv2.VideoCapture(0)
 
-def capture_webcam_frame():
-    # Open the webcam
 
+def capture_webcam_frame():
     # Capture one frame
     ret, frame = cap.read()
 
@@ -30,6 +29,7 @@ def capture_webcam_frame():
 
 def index(r):
     return render(r, "index.html")
+
 
 def getFrame(r):
     img = capture_webcam_frame()
