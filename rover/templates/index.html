@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WHAT</title>
+</head>
+<body>
+<img src="" alt="" id="top">
+<script>
+    function callApi(apiUrl) {
+      // Use the fetch function to make the API call
+      fetch(apiUrl)
+        .then(response => {
+          // Check if the response is successful (status code 2xx)
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          // Parse the response as JSON
+          return response.json();
+        })
+        .then(data => {
+          // Print the response data
+          //console.log('API Response:', data);
+          document.getElementById('top').src = data;
+        })
+        .catch(error => {
+          // Handle any errors that occurred during the fetch
+          console.error('Error:', error);
+        });
+    }
+
+    // Example usage:
+    const apiUrl = 'http://127.0.0.1:8000/frametop';
+    function animation(){
+        resp = callApi(apiUrl);
+        //document.getElementById('top').src = resp;
+        window.requestAnimationFrame(animation);
+    }
+
+</script>
+</body>
+</html>
